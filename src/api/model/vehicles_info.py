@@ -1,4 +1,4 @@
 class VehiclesInfoModel:
-    def __init__(self, _vehicles_available, _parking_slots_available):
-        self.vehicles_avaiable = _vehicles_available
-        self.parking_slots_available = _parking_slots_available
+    def __init__(self, vehicles_available : list, parking_slots_available : int):
+        self.vehicles_avaiable = vehicles_available
+        self.parking_slots_available = parking_slots_available
