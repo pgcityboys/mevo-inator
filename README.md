@@ -18,4 +18,41 @@ More options can be found in https://flask.palletsprojects.com/en/3.0.x/cli/.
 ### Documentation
 - Flask: https://flask.palletsprojects.com/en/3.0.x/quickstart/
 - Schemas: https://flask-marshmallow.readthedocs.io/en/latest/
-- 
+
+### API
+`GET /api/stations`
+Result
+```
+{
+  "data": [
+    {
+      "id": str,
+      "code": str,
+      "address": str,
+      "coordinates": {
+        "lat": float,
+        "lon": float
+      }
+      park_zone: [
+        {
+          "lat": float,
+          "lon": float
+        }
+      ]
+    }
+  ]
+}
+```
+
+`GET /api/vehicles/<id>`
+```
+{
+  "parking_slots_availabe": int,
+  "vehicles_availabe": [
+    {
+      "vehicle_type_id": str,
+      "count": int
+    }
+  ]
+}
+```
