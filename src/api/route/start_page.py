@@ -41,4 +41,3 @@ def get_station_data(json_row: dict) -> StationModel:
         station_coordinates,
         park_zone_coordinates
     )
-
