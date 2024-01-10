@@ -3,7 +3,14 @@ Microservice to get MEVO points
 
 ### Getting started
 Install dependencies
-`pip install -r requirements.txt`
+```
+pip install -r requirements.txt
+```
 
-Run app
-`python src/main.py`
+Run app in debug mode
+```
+flask src/main --debug
+```
+
+Port can be set with env variable. E.g. `FLASK_RUN_PORT=2137`. To do this in development mode you can use `.flaskenv` file.
+More options can be found in https://flask.palletsprojects.com/en/3.0.x/cli/.

@@ -10,5 +10,3 @@ app = Flask(__name__)
 def home():
     logger.debug("Got home request")
     return "Hello, world!"
-
-app.run(port=config.APP_PORT)
