@@ -1,4 +1,5 @@
 from http import HTTPStatus
+from logger import get_logger
 
 import requests as requests
 from flask import Blueprint
@@ -8,18 +9,23 @@ from api.schema.stations import StationsSchema
 
 stations_api = Blueprint('stations', __name__)
 
-headers = {'Client-Identifier': 'hackaton-pg'}
+MEVO_HEADERS = {'Client-Identifier': 'hackaton-pg'}
 MEVO_URL = "https://gbfs.urbansharing.com/rowermevo.pl"
+logger = get_logger(__name__)
+
 
 @stations_api.route('/stations')
 def find_stations_info():
-    response = requests.get(MEVO_URL + "/station_information.json", headers=headers)
-    stations_data = []
-    for i in response.json()["data"]["stations"]:
-        stations_data.append(get_station_data(i).serialize())
-    result = StationsModel(stations_data)
-
-    return StationsSchema().dump(result), HTTPStatus.OK
+    try:
+        response = requests.get(MEVO_URL + "/station_information.json", headers=MEVO_HEADERS)
+        stations_data = []
+        for i in response.json()["data"]["stations"]:
+            stations_data.append(get_station_data(i).serialize())
+        result = StationsModel(stations_data)
+        return StationsSchema().dump(result), HTTPStatus.OK
+    except Exception as e:
+        logger.error("Stations error: " + str(e))
+        return "", HTTPStatus.BAD_REQUEST
 
 
 def get_station_data(json_row: dict) -> StationModel:
