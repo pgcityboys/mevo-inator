@@ -47,8 +47,8 @@ Result
 `GET /api/vehicles/<id>`
 ```
 {
-  "parking_slots_availabe": int,
-  "vehicles_availabe": [
+  "parking_slots_available": int,
+  "vehicles_available": [
     {
       "vehicle_type_id": str,
       "count": int
