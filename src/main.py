@@ -1,9 +1,14 @@
+import config
 from flask import Flask
+from logger import get_logger
+
+logger = get_logger("main")
 
 app = Flask(__name__)
+
 @app.route('/') 
-
 def home():
-	return "Hello, world!"
+    logger.debug("Got home request")
+    return "Hello, world!"
 
-app.run(port=5000)
+app.run(port=config.APP_PORT)
