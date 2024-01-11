@@ -21,6 +21,9 @@ More options can be found in https://flask.palletsprojects.com/en/3.0.x/cli/.
 
 ### API
 `GET /api/stations`
+#### Params
+- lat (optional) - Latitude of position to look for closest stations from.
+- lon (optional) - Longitude of position to look for closes stations from.
 Result
 ```
 {
